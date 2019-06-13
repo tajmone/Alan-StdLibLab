@@ -1,0 +1,121 @@
+
+
+Actors Compliance Tests 
+An adventure to test actors compliance. 
+(C) 2018 by Tristano Ajmone 
+Programmed with the ALAN Interactive Fiction Language v3.0beta6 build 1880
+.
+Standard Library v2.1 
+Version 1 
+All rights reserved.
+
+
+Beach
+There is a woman here. There is a man here.
+
+> ; ******************************************************************************
+> ; *                                                                            *
+> ; *                          ACTORS COMPLIANCE TESTS                           *
+> ; *                                                                            *
+> ; ******************************************************************************
+> ; Actors can be 'compliant' or not, where compliance affects wether items can be
+> ; removed from their inventory or not. The verb `ask_for` is an exception, for
+> ; it temporarily makes the actor compliant to allow extraction of the item, and
+> ; then restores the original compliance state of the actor.
+> inventory
+You are empty-handed.
+
+> examine woman
+A rather mysterious woman. The woman is carrying a magic mirror and a 
+wine bottle.
+
+> examine man
+A serious lookin man. The man is carrying a sword and a beer can.
+
+> ; ==============================================================================
+> ; Test compliance before and after 'ask_for'
+> ; ==============================================================================
+> ; The 'test compliance of' verb debugs the compliance state of an actor.
+> ; (See Issue #18 on the previous 'ask_for' problem).
+> ; --------------------
+> ; Test Compliant Actor
+> ; --------------------
+> test compliance of woman
+The woman is compliant.
+
+> ask woman for mirror
+The woman gives the magic mirror to you.
+
+> test compliance of woman
+The woman is compliant.
+
+> ; OK! compliance is as before.
+> ; ------------------------
+> ; Test Non-Compliant Actor
+> ; ------------------------
+> test compliance of man
+The man is not compliant.
+
+> ask man for sword
+The man gives the sword to you.
+
+> test compliance of man
+The man is not compliant.
+
+> ; OK! compliance is as before.
+> ;---------------------
+> inventory
+You are carrying a magic mirror and a sword.
+
+> examine woman
+A rather mysterious woman. The woman is carrying a wine bottle.
+
+> examine man
+A serious lookin man. The man is carrying a beer can.
+
+> ; ==============================================================================
+> ; Test 'ask_for' with 'liquid'
+> ; ==============================================================================
+> ; The verb `ask_for` is also present on the 'liquid' class, so that asking for
+> ; a liquid which has a vessel behaves as if the player asked for the vessel.
+> ; It should behave just like 'ask_for' in terms of handling actors compliance.
+> examine wine bottle
+The wine bottle contains a wine.
+
+> examine beer can
+The beer can contains a beer.
+
+> ; --------------------
+> ; Test Compliant Actor
+> ; --------------------
+> test compliance of woman
+The woman is compliant.
+
+> ask woman for wine
+The woman gives the wine bottle of wine to you.
+
+> inventory
+You are carrying a magic mirror, a wine bottle and a sword.
+
+> test compliance of woman
+The woman is compliant.
+
+> ; ------------------------
+> ; Test Non-Compliant Actor
+> ; ------------------------
+> test compliance of man
+The man is not compliant.
+
+> ask man for beer
+The man gives the beer can of beer to you.
+
+> inventory
+You are carrying a magic mirror, a wine bottle, a sword and a beer can.
+
+> test compliance of man
+The man is not compliant.
+
+> ; OK! compliance is as before.
+> 
+
+Do you want to RESTART, RESTORE, QUIT or UNDO? 

@@ -1,0 +1,14 @@
+; ==============================================================================
+; INITIAL STATE OF CONTAINERS
+; ==============================================================================
+; The bottle has wine in it, the jar is empty:
+x bottle
+x jar
+; ==============================================================================
+; THE 'FILL WITH' BUG!
+; ==============================================================================
+; Now we attempt to fill the jar with wine (it will fail by default):
+fill jar with wine
+x bottle
+x jar
+pour wine

@@ -1,0 +1,55 @@
+; ******************************************************************************
+; *                                                                            *
+; *                  CLOTHING: TEST MOVING AROUND WORN ITEMS                   *
+; *                                                                            *
+; ******************************************************************************
+; This script will test how the library copes with worn items being moved around
+; and transferred by the various verbs that could dislocate a worn item, either
+; explicitly or implicitly.
+north
+north
+; ------------------------------------------------------------------------------
+; TEST TRYING REMOVE INEXISTENT ITEM
+; ------------------------------------------------------------------------------
+remove XYZZY
+; ==============================================================================
+; TEST FROM ACTORS TO INANIMATE OBJECTS
+; ==============================================================================
+; Let's test moving worn items from their wearer to an inanimate object...
+; ------------------------------------------------------------------------------
+; TEST 'put' WORN -> CONTAINER
+; ------------------------------------------------------------------------------
+; Using 'put' verb with a worn item...
+examine basket
+; NOTE: boxers are currently bing worn by hero, underneath trousers (khakis)!
+inventory
+examine boxers
+DBG_CLOTHES boxers
+put boxers in basket
+DBG_CLOTHES boxers
+examine basket
+west
+; ==============================================================================
+; TEST FROM NPCs TO HERO
+; ==============================================================================
+; The Hero can acquire clothes worn by NPCs in different ways (get, ask, etc.),
+; some of which might require the NPC to be compliant, other not.
+examine assistant
+DBG_CLOTHES boots
+take assistant boots
+ask assistant for boots
+DBG_CLOTHES boots
+wear boots
+remove sneakers
+wear boots
+; ------------------------------------------------------------------------------
+; TEST AGAIN REMOVE INEXISTENT ITEM
+; ------------------------------------------------------------------------------
+remove XYZZY
+; ** NOTE ** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+;            In the past attempting again to remove a non exisiting item, like
+;            we did at the beginning, used to fail silently, probably indicating
+;            that somehing during the tests had messed up Alan memory. Now the
+;            problem seems fixed, but we'll keep this test in place so we'll
+;            catch the bug if it ever creeps back.
+;            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -1,0 +1,58 @@
+; ******************************************************************************
+; *                                                                            *
+; *                          ACTORS COMPLIANCE TESTS                           *
+; *                                                                            *
+; ******************************************************************************
+; Actors can be 'compliant' or not, where compliance affects wether items can be
+; removed from their inventory or not. The verb `ask_for` is an exception, for
+; it temporarily makes the actor compliant to allow extraction of the item, and
+; then restores the original compliance state of the actor.
+inventory
+examine woman
+examine man
+; ==============================================================================
+; Test compliance before and after 'ask_for'
+; ==============================================================================
+; The 'test compliance of' verb debugs the compliance state of an actor.
+; (See Issue #18 on the previous 'ask_for' problem).
+; --------------------
+; Test Compliant Actor
+; --------------------
+test compliance of woman
+ask woman for mirror
+test compliance of woman
+; OK! compliance is as before.
+; ------------------------
+; Test Non-Compliant Actor
+; ------------------------
+test compliance of man
+ask man for sword
+test compliance of man
+; OK! compliance is as before.
+;---------------------
+inventory
+examine woman
+examine man
+; ==============================================================================
+; Test 'ask_for' with 'liquid'
+; ==============================================================================
+; The verb `ask_for` is also present on the 'liquid' class, so that asking for
+; a liquid which has a vessel behaves as if the player asked for the vessel.
+; It should behave just like 'ask_for' in terms of handling actors compliance.
+examine wine bottle
+examine beer can
+; --------------------
+; Test Compliant Actor
+; --------------------
+test compliance of woman
+ask woman for wine
+inventory
+test compliance of woman
+; ------------------------
+; Test Non-Compliant Actor
+; ------------------------
+test compliance of man
+ask man for beer
+inventory
+test compliance of man
+; OK! compliance is as before.
