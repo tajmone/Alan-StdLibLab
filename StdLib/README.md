@@ -10,6 +10,9 @@ Custom fork of the [ALAN Standard Library] by [Anssi Räisänen], maintained by 
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
 - [Folder Contents](#folder-contents)
+    - [Library Modules](#library-modules)
+    - [Library Documentation](#library-documentation)
+    - [Developer's Notes](#developers-notes)
 - [Roadmap](#roadmap)
     - [Further Modularization](#further-modularization)
     - [Consistency in Code Conventions](#consistency-in-code-conventions)
@@ -24,6 +27,8 @@ Custom fork of the [ALAN Standard Library] by [Anssi Räisänen], maintained by 
 
 # Folder Contents
 
+## Library Modules
+
 - [`library.i`](./library.i) — main library module, imports all others:
     + [`lib_classes.i`](./lib_classes.i)
     + [`lib_definitions.i`](./lib_definitions.i)
@@ -32,19 +37,34 @@ Custom fork of the [ALAN Standard Library] by [Anssi Räisänen], maintained by 
     + [`lib_messages_runtime.i`](./lib_messages_runtime.i) — Runtime messages definitions.
     + [`lib_verbs.i`](./lib_verbs.i)
     + [`lib_verbs_restrictions.i`](./lib_verbs_restrictions.i) — Restricted Actions.
+
+The above sources are based on the StdLib source files from commit [`137b3cc`][137b3cc] of the upstream project.
+
+## Library Documentation
+
+- [`CHANGES.md`](./CHANGES.md) — Notes on implementation differences between this fork and the upstream StdLib.
+
+The HTML docs inside this folder are just quick references to each module, build from the comments in the source files:
+
+- [`library.html`](./library.html)
+- [`lib_classes.html`](./lib_classes.html)
+- [`lib_definitions.html`](./lib_definitions.html)
+- [`lib_locations.html`](./lib_locations.html)
+- [`lib_messages_library.html`](./lib_messages_library.html)
+- [`lib_messages_runtime.html`](./lib_messages_runtime.html)
+- [`lib_verbs.html`](./lib_verbs.html)
+- [`lib_verbs_restrictions.html`](./lib_verbs_restrictions.html)
+
+These HTML files are generated/updated via the following batch script:
+
 - [`DOXTERIZE.bat`](./DOXTERIZE.bat) — Generates StdLib documentation:
-    + [`library.html`](./library.html)
-    + [`lib_classes.html`](./lib_classes.html)
-    + [`lib_definitions.html`](./lib_definitions.html)
-    + [`lib_locations.html`](./lib_locations.html)
-    + [`lib_messages_library.html`](./lib_messages_library.html)
-    + [`lib_messages_runtime.html`](./lib_messages_runtime.html)
-    + [`lib_verbs.html`](./lib_verbs.html)
-    + [`lib_verbs_restrictions.html`](./lib_verbs_restrictions.html)
+
+## Developer's Notes
+
+Various annotations documents for project maintenance and development:
+
 - [`DOXTER.md`](./DOXTER.md) — Notes on tagged regions organization.
 
-
-Based on the StdLib source files from commit [`137b3cc`][137b3cc] of the upstream project.
 
 # Roadmap
 
