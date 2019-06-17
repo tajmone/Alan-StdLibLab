@@ -1,3 +1,14 @@
+--= Alan StdLib Fork: Runtime Messages
+--| Tristano Ajmone <tajmone@gmail.com>
+--~-----------------------------------------------------------------------------
+--~ "lib_messages_runtime.i"
+--| 2019-06-17: Alan 3.0beta6 build 1980
+--|=============================================================================
+--| Adaptation of the `lib_messages.i` module, taken from
+--| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.0.
+--| Edited by Tristano Ajmone,  (C) 2019, Artistic License 2.0.
+--|=============================================================================
+
 -- ALAN Standard Library v2.1
 -- Locations (file name: 'lib_locations.i')
 

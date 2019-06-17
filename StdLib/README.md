@@ -32,6 +32,16 @@ Custom fork of the [ALAN Standard Library] by [Anssi Räisänen], maintained by 
     + [`lib_messages_runtime.i`](./lib_messages_runtime.i) — Runtime messages definitions.
     + [`lib_verbs.i`](./lib_verbs.i)
     + [`lib_verbs_restrictions.i`](./lib_verbs_restrictions.i) — Restricted Actions.
+- [`DOXTERIZE.bat`](./DOXTERIZE.bat) — Generates StdLib documentation:
+    + [`library.html`](./library.html)
+    + [`lib_classes.html`](./lib_classes.html)
+    + [`lib_definitions.html`](./lib_definitions.html)
+    + [`lib_locations.html`](./lib_locations.html)
+    + [`lib_messages_library.html`](./lib_messages_library.html)
+    + [`lib_messages_runtime.html`](./lib_messages_runtime.html)
+    + [`lib_verbs.html`](./lib_verbs.html)
+    + [`lib_verbs_restrictions.html`](./lib_verbs_restrictions.html)
+
 
 Based on the StdLib source files from commit [`137b3cc`][137b3cc] of the upstream project.
 

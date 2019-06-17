@@ -1,3 +1,14 @@
+--= Alan StdLib Fork: Library Messages
+--| Tristano Ajmone <tajmone@gmail.com>
+--~-----------------------------------------------------------------------------
+--~ "lib_messages_library.i"
+--| 2019-06-17: Alan 3.0beta6 build 1980
+--|=============================================================================
+--| Adaptation of the `lib_definitions.i` module, taken from
+--| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.0.
+--| Edited by Tristano Ajmone,  (C) 2019, Artistic License 2.0.
+--|=============================================================================
+
 ADD TO EVERY definition_block
 
   -- messages for the hero:
