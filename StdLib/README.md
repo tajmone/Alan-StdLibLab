@@ -28,9 +28,10 @@ Custom fork of the [ALAN Standard Library] by [Anssi Räisänen], maintained by 
     + [`lib_classes.i`](./lib_classes.i)
     + [`lib_definitions.i`](./lib_definitions.i)
     + [`lib_locations.i`](./lib_locations.i)
-    + [`lib_messages_library.i`](./lib_messages_library.i)
-    + [`lib_messages_runtime.i`](./lib_messages_runtime.i)
+    + [`lib_messages_library.i`](./lib_messages_library.i) — String attributes for library messages.
+    + [`lib_messages_runtime.i`](./lib_messages_runtime.i) — Runtime messages definitions.
     + [`lib_verbs.i`](./lib_verbs.i)
+    + [`lib_verbs_restrictions.i`](./lib_verbs_restrictions.i) — Restricted Actions.
 
 Based on the StdLib source files from commit [`137b3cc`][137b3cc] of the upstream project.
 
@@ -49,8 +50,9 @@ The goal of this fork of the [ALAN Standard Library] is to adopt a slightly diff
 
 Split the library into smaller modules, for this simplifies code maintenance and readability:
 
-- [x] Add `lib_messages_library.i` — move to this module all the string attributes for library messages contained in `lib_definitions.i`
+- [x] Add `lib_messages_library.i` — move to this module all the string attributes for library messages contained in `lib_definitions.i`.
 - [x] Rename `lib_messages.i` to `lib_messages_runtime.i` — just to distinguish between the library messages and the runtime messages modules.
+- [x] Add `lib_verbs_restrictions.i` move to this module all the code for __Restricted Actions__ contained in `lib_definitions.i`.
 - [ ] Add `lib_classes_clothing.i` — move to this module all the code regarding clothing, because it's long and deserved to be in a module of its own.
 
 There's no reason why different aspects of the library shouldn't be kept each in its own module. Isolating features in standalone source files simplifies greatly maintenance tasks for developers, and it's easier to study for end users too. Regardless of how many modules there are in the library, authors will always need to to `IMPORT` a single file in their adventures.
