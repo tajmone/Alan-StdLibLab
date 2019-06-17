@@ -2223,8 +2223,4 @@ EVERY male ISA PERSON
 END EVERY.
 
 
-
-
--- end of file.
-
-
+---< End of File >---

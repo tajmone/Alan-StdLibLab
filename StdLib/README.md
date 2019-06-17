@@ -41,6 +41,7 @@ Custom fork of the [ALAN Standard Library] by [Anssi Räisänen], maintained by 
     + [`lib_messages_runtime.html`](./lib_messages_runtime.html)
     + [`lib_verbs.html`](./lib_verbs.html)
     + [`lib_verbs_restrictions.html`](./lib_verbs_restrictions.html)
+- [`DOXTER.md`](./DOXTER.md) — Notes on tagged regions organization.
 
 
 Based on the StdLib source files from commit [`137b3cc`][137b3cc] of the upstream project.

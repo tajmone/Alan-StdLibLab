@@ -19,194 +19,87 @@
 ----- actually verbs, such as "inventory", "verbose" and "again".
 ----- Verbs originally defined in this file are the following:
 
-
------ VERB        SYNONYMS                                        SYNTAX                              ARITY   OBJ
-
------ about       (+ help, info)                                  about                               0
------ again       (+ g)                                           again                               0
------ answer      (+ reply)                                       answer (topic)                      1
------ ask         (+ enquire, inquire, interrogate)               ask (act) about (topic)             2
------ ask_for                                                     ask (act) for (obj)                 2       x
------ attack      (+ beat, fight, hit, punch)                     attack (target)                     1
------ attack_with                                                 attack (target) with (weapon)       2
------ bite        (+ chew)                                        bite (obj)                          1       x
------ break       (+ destroy)                                     break (obj)                         1       x
------ break_with                                                  break (obj) with (instr)            2       x
------ brief                                                       brief                               0
------ burn                                                        burn (obj)                          1       x
------ burn_with                                                   burn (obj) with (instr)             2       x
------ buy         (+ purchase)                                    buy (item)                          1
------ catch                                                       catch (obj)                         1       x
------ clean       (+ polish, wipe)                                clean (obj)                         1       x
------ climb                                                       climb (obj)                         1       x
------ climb_on                                                    climb on (surface)                  1
------ climb_through                                               climb through (obj)                 1       x
------ close       (+ shut)                                        close (obj)                         1       x
------ close_with                                                  close (obj) with (instr)            2       x
------ consult                                                     consult (source) about (topic)      2
------ credits     (+ acknowledgments, author, copyright)          credits                             0
------ cut                                                         cut (obj)                           1       x
------ cut_with                                                    cut (obj) with (instr)              2       x
------ dance                                                       dance                               0
------ dig                                                         dig (obj)                           1       x
------ dive                                                        dive                                0
------ dive_in                                                     dive in (liq)                       1
------ drink                                                       drink (liq)                         1
------ drive                                                       drive (vehicle)                     1
------ drop        (+ discard, dump, reject)                       drop (obj)                          1       x
------ eat                                                         eat (food)                          1
------ empty                                                       empty (obj)                         1       x
------ empty_in                                                    empty (obj) in (cont)               2       x
------ empty_on                                                    empty (obj) on (surface)            2       x
------ enter                                                       enter (obj)                         1       x
------ examine     (+ check, inspect, observe, x)                  examine (obj)                       1       x
------ exit                                                        exit (obj)                          1       x
------ extinguish  (+ put out, quench)                             extinguish (obj)                    1       x
------ fill                                                        fill (cont)                         1
------ fill_with                                                   fill (cont) with (substance)        2
------ find        (+ locate)                                      find (obj)                          1       x
------ fire                                                        fire (weapon)                       1
------ fire_at                                                     fire (weapon) at (target)           2
------ fix         (+ mend, repair)                                fix (obj)                           1       x
------ follow                                                      follow (act)                        1
------ free        (+ release)                                     free (obj)                          1       x
------ get_up                                                      get up                              0
------ get_off                                                     get off (obj)                       1       x
------ give                                                        give (obj) to (recipient)           2       x
------ go_to                                                       go to (dest)                        1
------ hint        (+ hints)                                       hint                                0
------ i           (+ inv, inventory)                              inventory                           0
------ jump                                                        jump                                0
------ jump_in                                                     jump in (cont)                      1
------ jump_on                                                     jump on (surface)                   1
------ kick                                                        kick (target)                       1
------ kill        (+ murder)                                      kill (victim)                       1
------ kill_with                                                   kill (victim) with (weapon)         2
------ kiss        (+ hug, embrace)                                kiss (obj)                          1       x
------ knock (on)                                                  knock on (obj)                      1       x
------ lie_down                                                    lie down                            0
------ lie_in                                                      lie in (cont)                       1
------ lie_on                                                      lie on (surface)                    1
------ lift                                                        lift (obj)                          1       x
------ light       (+ lit)                                         light (obj)                         1       x
------ listen0                                                     listen                              0
------ listen                                                      listen to (obj)                     1       x
------ lock                                                        lock (obj)                          1       x
------ lock_with                                                   lock (obj) with (key)               2       x
------ look        (+ gaze, peek)                                  look                                0
------ look_behind                                                 look behind (bulk)                  1
------ look_in                                                     look in (cont)                      1
------ look_out_of                                                 look out of (obj)                   1       x
------ look_through                                                look through (bulk)                 1
------ look_under                                                  look under (bulk)                   1
------ look_up                                                     look up                             0
------ no                                                          no                                  0
------ notify (on, off)                                            notify.  notify on.  notify off     0
------ open                                                        open (obj)                          1       x
------ open_with                                                   open (obj) with (instr)             2       x
------ play                                                        play (obj)                          1       x
------ play_with                                                   play with (obj)                     1       x
------ pour        (= defined at the verb 'empty')                 pour (obj)                          1       x
------ pour_in     (= defined at the verb 'emtpy_in')              pour (obj) in (cont)                2       x
------ pour_on     (= defined at the verb 'empty_on')              pour (obj) on (surface)             2       x
------ pray                                                        pray                                0
------ pry                                                         pry (obj)                           1       x
------ pry_with                                                    pry (obj) with (instr)              2       x
------ pull                                                        pull (obj)                          1       x
------ push                                                        push (obj)                          1       x
------ push_with                                                   push (obj) with (instr)             2       x
------ put         (+ lay, place)                                  put (obj)                           1       x
------ put_against                                                 put (obj) against (bulk))           2       x
------ put_behind                                                  put (obj) behind (bulk)             2       x
------ put_down    (= defined at the verb 'drop')                  put down (obj)                      1       x
------ put_in      (+ insert)                                      put (obj) in (cont)                 2       x
------ put_near                                                    put (obj) near (bulk)               2       x
------ put_on                                                      put (obj) on (surface)              2       x
------ put_under                                                   put (obj) under (bulk)              2       x
------ quit        (+ q)                                           quit                                0
------ read                                                        read (obj)                          1       x
------ remove                                                      remove (obj)                        1       x
------ restart                                                     restart                             0
------ restore                                                     restore                             0
------ rub                                                         rub (obj)                           1       x
------ save                                                        save                                0
------ say                                                         say (topic)                         1
------ say_to                                                      say (topic) to (act)                2
------ score                                                       score                               0
------ scratch                                                     scratch (obj)                       1       x
------ script                                                      script.  script on.  script off.    0
------ search                                                      search (obj)                        1       x
------ sell                                                        sell (item)                         1
------ shake                                                       shake (obj)                         1       x
------ shoot (at)                                                  shoot at (target)                   1
------ shoot_with                                                  shoot (target) with (weapon)        2
------ shout       (+ scream, yell)                                shout                               0
------ show        (+ reveal)                                      show (obj) to (act)                 2       x
------ sing                                                        sing                                0
------ sip                                                         sip (liq)                           1
------ sit (down)                                                  sit.  sit down.                     0
------ sit_on                                                      sit on (surface)                    1
------ sleep       (+ rest)                                        sleep                               0
------ smell0                                                      smell                               0
------ smell                                                       smell (odour)                       1
------ squeeze                                                     squeeze (obj)                       1       x
------ stand (up)                                                  stand.  stand up.                   0
------ stand_on                                                    stand on (surface)                  1
------ swim                                                        swim                                0
------ swim_in                                                     swim in (liq)                       1
------ switch                                                      switch (obj)                        1       x
------ switch_on   (= defined at the verb 'turn_on')               switch on (app)                     1
------ switch_off  (= defined at the verb 'turn_off')              switch off (app)                    1
------ take        (+ carry, get, grab, hold, obtain)              take (obj)                          1       x
------ take_from   (+ remove from)                                 take (obj) from (holder)            2       x
------ talk                                                        talk                                0
------ talk_to     (+ speak)                                       talk to (act)                       1
------ taste       (+ lick)                                        taste (obj)                         1       x
------ tear        (+ rip)                                         tear (obj)                          1       x
------ tell        (+ enlighten, inform)                           tell (act) about (topic)            2
------ think                                                       think                               0
------ think_about                                                 think about (topic)                 1
------ throw                                                       throw (projectile)                  1
------ throw_at                                                    throw (projectile) at (target)      2
------ throw_in                                                    throw (projectile) in (cont)        2
------ throw_to                                                    throw (projectile) to (recipient)   2
------ tie                                                         tie (obj)                           1       x
------ tie_to                                                      tie (obj) to (target)               2       x
------ touch       (+ feel)                                        touch (obj)                         1       x
------ touch_with  (+ feel)                                        touch (ogg) 'with' (strum)          2       x
------ turn        (+ rotate)                                      turn (obj)                          1       x
------ turn_on                                                     turn on (app)                       1
------ turn_off                                                    turn off (app)                      1
------ undress                                                     undress                             0
------ unlock                                                      unlock (obj)                        1       x
------ unlock_with                                                 unlock (obj) with (key)             2       x
------ use                                                         use (obj)                           1       x
------ use_with                                                    use (obj) with (instr)              2       x
------ verbose                                                     verbose                             0
------ wait        (+ z)                                           wait                                0
------ wear                                                        wear (obj)                          1       x
------ what_am_i                                                   what am i                           0
------ what_is                                                     what is (obj)                       1       x
------ where_am_i                                                  where am i                          0
------ where_is                                                    where is (obj)                      1       x
------ who_am_i                                                    who am i                            0
------ who_is                                                      who is (act)                        1
------ write                                                       write (txt) on (obj)                2       x
------ yes                                                         yes                                 0
-
-
-
-
 ----- Directions (north, south, up, etc.) are declared in the file 'locations.i'.
 
 
+-->verbs_list(1000)
+--~=============================================================================
+--~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~-----------------------------------------------------------------------------
+--|
+--| == List of All Verbs
+--|
+--~-----------------------------------------------------------------------------
+--~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~=============================================================================
+--|
+--| Below are listed all the verbs defined by the library, divided into three
+--| groups:
+--| 
+--| 1. <<Meta Verbs>>
+--| 2. <<Game Commands>>
+--| 3. <<Questions and Answers Verbs>>
+--| 
+--| The verbs in each table are sorted alphabetically, to simplify consultation.
+--| In the actual source code, verbs definitions are grouped by affinity, in
+--| order to simplify editing or studying on them.
+--| 
+--| ============================================================================
+--| 
+--| [big]#*Tables Notation*#
+--| 
+--| The meaning of the letters in the last two columns is the following:
+--| 
+--| [horizontal]
+--|   [A] Arity     :: <n> = number of parameters
+--|   [M] Meta Verb :: {X} = Yes
+--| ============================================================================
+--<
 
+-->meta_verbs(10000)
+--~=============================================================================
+--~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~-----------------------------------------------------------------------------
+--|
+--| == Meta Verbs
+--|
+--~-----------------------------------------------------------------------------
+--~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~=============================================================================
+--|
+--| This group includes verbs dealing with gameplay aspects (saving, leaving,
+--| etc.) instead of the adventure world or the main character. They are all
+--| `META` verbs, which don't consume a turn in the adventure game.
+--| Also known as _extradiegetic commands_, or _out-of-world actions_.
+--<
 
-
-
-
------ The verbs and commands:
-
+-->table_meta_verbs(1010)
+--| === Table of Meta Verbs
+--| [cols="15m,25d,35d,2*^5d",options="header"]
+--| |=========================================================================
+--| | VERB       | SYNONYMS                           | SYNTAX     | A |  M 
+--~ +------------+------------------------------------+------------+---+-----+
+--| | about      | help, info                         | about      | 0 | {x}
+--| | brief      |                                    | brief      | 0 | {x}
+--| | credits    | acknowledgments, author, copyright | credits    | 0 | {x}
+--| | hint       | hints                              | hint       | 0 | {x}
+--| | notify     |                                    | notify     | 0 | {x}
+--| | notify_on  |                                    | notify on  | 0 | {x}
+--| | notify_off |                                    | notify off | 0 | {x}
+--| | quit       | Q                                  | quit       | 0 | {x}
+--| | script     |                                    | script     | 0 | {x}
+--| | script_on  |                                    | script on  | 0 | {x}
+--| | script_off |                                    | script off | 0 | {x}
+--| | restart    |                                    | restart    | 0 | {x}
+--| | restore    |                                    | restore    | 0 | {x}
+--| | save       |                                    | save       | 0 | {x}
+--| | verbose    |                                    | verbose    | 0 | {x}
+--| |=========================================================================
+--<
 
 
 -- =============================================================
@@ -238,6 +131,528 @@ META VERB 'about'
     $pType CREDITS to see information about the author and the copyright issues.
     $pTo stop playing and end the program, type QUIT.]$p"
 END VERB 'about'.
+
+
+-- ================================================================
+
+
+----- BRIEF
+
+
+-- ================================================================
+
+
+-- Use "Visits 0." or "Visits 1000." in the START section if you want
+-- the game to start in verbose or brief mode. (By default,
+-- all games start in the verbose mode.)
+
+
+SYNTAX brief = brief.
+
+
+META VERB brief
+  CHECK my_game CAN brief
+    ELSE SAY restricted_response OF my_game.
+  DOES
+    Visits 1000.
+    "Brief mode is now on. Location descriptions will only be shown
+    the first time you visit."
+END VERB brief.
+
+
+-- ==============================================================
+
+
+----- CREDITS (+ acknowledgments, author, copyright)
+
+
+-- ==============================================================
+
+
+SYNTAX credits = credits.
+
+SYNONYMS acknowledgments, author, copyright = credits.
+
+
+META VERB credits
+  CHECK my_game CAN credits
+    ELSE SAY restricted_response OF my_game.
+  DOES
+    "The author retains the copyright to this game.
+    $pThis game was written using the ALAN Adventure Language. ALAN is
+    an interactive fiction authoring system by Thomas Nilsson.
+    $nE-mail address: thomas@alanif.se $pFurther information
+    about the ALAN system can be obtained from
+    the World Wide Web Internet site
+    $ihttp://www.alanif.se$p"
+END VERB credits.
+
+
+-- ==============================================================
+
+
+----- HINT (+ hints)
+
+
+-- ==============================================================
+
+
+SYNTAX hint = hint.
+
+SYNONYMS hints = hint.
+
+META VERB hint
+  CHECK my_game CAN hint
+    ELSE SAY restricted_response OF my_game.
+
+  DOES
+    "Unfortunately hints are not available in this game."
+END VERB hint.
+
+
+
+-- ==============================================================
+
+
+----- NOTIFY
+
+
+-- ==============================================================
+
+
+-- Thanks to Steve Griffiths whose 'Score notification' sample was used
+-- in declaring this verb.
+
+
+
+SYNTAX notify = notify.
+
+   notify_on = notify 'on'.
+    -- The instructions tell the player that mere 'notify'
+    -- is enough, but these two verbs are implemented
+   notify_off = notify 'off'.
+    -- In case (s)he adds the prepositions to the end anyway.
+
+
+META VERB notify
+  CHECK my_game CAN notify
+    ELSE SAY restricted_response OF my_game.
+  DOES
+    IF my_game HAS notify_turned_on
+      THEN MAKE my_game NOT notify_turned_on.
+        "Score notification is now disabled. (You can turn it back on
+        using the NOTIFY command again.)"
+      ELSE MAKE my_game notify_turned_on. "Score notification is now enabled.
+        (You can turn it off using the NOTIFY command again.)"
+    END IF.
+END VERB notify.
+
+
+META VERB notify_on
+  CHECK my_game CAN notify_on
+    ELSE SAY restricted_response OF my_game.
+  DOES
+    IF my_game HAS notify_turned_on
+      THEN "Score notification is already enabled."
+      ELSE MAKE my_game notify_turned_on.
+        "Score notification is now enabled.
+        (You can turn it off using the NOTIFY command again.)"
+    END IF.
+END VERB notify_on.
+
+
+META VERB notify_off
+  CHECK my_game CAN notify_off
+    ELSE SAY restricted_response OF my_game.
+  DOES
+    IF my_game HAS notify_turned_on
+      THEN MAKE my_game NOT notify_turned_on.
+        "Score notification is now disabled. (You can turn it back on
+        using the NOTIFY command again.)"
+      ELSE "Score notification is already disabled."
+    END IF.
+END VERB notify_off.
+
+
+-- The 'notify' verb allows the players to disable the score change
+-- messages. (Some players find such messages annoying.)
+-- The verb toggles the hero's 'notify_on' attribute on and off. That
+-- attribute is checked by the 'checkscore' event to determine whether
+-- to display the score msg or not.
+
+-- The following event is run each turn to check if the game score is greater than
+-- the last recorded score (which is stored in the Hero's 'oldscore'
+-- attribute). If the score is greater, then the 'Score has gone up...'
+-- text is displayed (as long as the player hasn't disabled it by using the
+-- 'notify' verb - which sets 'notify_on' to off
+-- - i.e. the hero 'IS NOT notify_on'.)
+
+-- NOTE: The ALAN scoring system records the game score in a thing called
+-- score. It isn't called score OF anything; its just 'score'.
+
+-- NOTE: This event assumes score can only increase, if score can go
+-- down then you would need to modify this code a bit.
+
+
+EVENT check_score
+  IF oldscore OF my_game < score
+    THEN
+      IF my_game HAS notify_turned_on
+        THEN
+          -- ie: the player wants to see score msgs
+          "$p(Your score has just gone up by" SAY (score - oldscore OF my_game).
+          IF (score - oldscore OF my_game) = 1
+            THEN "point.)"
+            ELSE "points.)"
+          END IF.
+          -- this msg only displayed the first time player is notified
+          -- of a score change
+          IF my_game HAS NOT seen_notify
+            THEN MAKE my_game seen_notify.
+              "$p(You can use the NOTIFY command to disable score change messages.)"
+          END IF.
+      END IF.
+
+      SET oldscore OF my_game TO score.
+  END IF.
+  -- run the 'check_score' event again next turn:
+  SCHEDULE check_score AT hero AFTER 1.
+END EVENT.
+
+
+-- ==============================================================
+
+
+----- QUIT
+
+
+-- ==============================================================
+
+
+SYNTAX
+  'quit' = 'quit'.
+
+SYNONYMS q = 'quit'.
+
+
+META VERB 'quit'
+  CHECK my_game CAN 'quit'
+    ELSE SAY restricted_response OF my_game.
+  DOES
+    QUIT.
+END VERB 'quit'.
+
+
+
+
+-- ==============================================================
+
+
+------ SCRIPT
+
+
+-- ==============================================================
+
+
+SYNTAX 'script' = 'script'.
+       script_on = 'script' 'on'.
+       script_off = 'script' 'off'.
+
+SYNONYMS 'transcript' = 'script'.
+
+META VERB 'script'
+  CHECK my_game CAN 'script'
+    ELSE SAY restricted_response OF my_game.
+  DOES
+    "You can turn transcripting on and off using the 'script on/off' command within the game.
+    The transcript will be available in a file with a name starting with the game name.
+    $pIn a GUI version you can also find this in the drop-down menu in the interpreter.
+    $pIn a command line version you can start your game with the '-s' switch to get a transcript
+    of the whole game."
+END VERB 'script'.
+
+META VERB script_on
+  CHECK my_game CAN script_on
+    ELSE SAY restricted_response OF my_game.
+  DOES
+    TRANSCRIPT ON.
+    "Transcripting turned on."
+END VERB script_on.
+
+META VERB script_off
+  CHECK my_game CAN script_off
+    ELSE SAY restricted_response OF my_game.
+  DOES
+    TRANSCRIPT OFF.
+    "Transcripting turned off."
+END VERB script_off.
+
+
+
+-- ==============================================================
+
+
+----- RESTART
+
+
+-- ==============================================================
+
+
+SYNTAX 'restart' = 'restart'.
+
+
+META VERB 'restart'
+  CHECK my_game CAN 'restart'
+    ELSE SAY restricted_response OF my_game.
+  DOES
+    RESTART.
+END VERB 'restart'.
+
+
+
+-- ==============================================================
+
+
+----- RESTORE
+
+
+-- ==============================================================
+
+
+SYNTAX 'restore' = 'restore'.
+
+
+META VERB 'restore'
+  CHECK my_game CAN 'restore'
+    ELSE SAY restricted_response OF my_game.
+  DOES
+    RESTORE.
+END VERB 'restore'.
+
+
+
+-- ==============================================================
+
+
+----- SAVE
+
+
+-- ==============================================================
+
+
+SYNTAX 'save' = 'save'.
+
+
+META VERB 'save'
+  CHECK my_game CAN 'save'
+    ELSE SAY restricted_response OF my_game.
+  DOES
+    SAVE.
+END VERB 'save'.
+
+
+
+-- ==============================================================
+
+
+----- VERBOSE (see also -> BRIEF)
+
+
+-- ==============================================================
+
+
+SYNTAX verbose = verbose.
+
+
+META VERB verbose
+  CHECK my_game CAN verbose
+    ELSE SAY restricted_response OF my_game.
+  DOES
+    VISITS 0.
+    "Verbose mode is now on. Location descriptions will be
+    always shown in full."
+END VERB verbose.
+
+
+
+-->game_commands(20000)
+--~=============================================================================
+--~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~-----------------------------------------------------------------------------
+--|
+--| == Game Commands
+--|
+--~-----------------------------------------------------------------------------
+--~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~=============================================================================
+--| 
+--| This group of verbs defines commands directed to the main character in order
+--| to interact with the adventure.
+--<
+
+
+-->table_game_verbs(1020)
+--| === Table of Game Commands
+--| [cols="15m,25d,35d,2*^5d",options="header"]
+--| |===============================================================================================
+--| | VERB          | SYNONYMS                       | SYNTAX                            | A |  M 
+--~ +--------------------+---------------------------+-----------------------------------+---+-----+
+--| | again         | G                              | again                             | 0 |
+--| | answer        | reply                          | answer (topic)                    | 1 |
+--| | ask           | enquire, inquire, interrogate  | ask (act) about (topic)           | 2 |
+--| | ask_for       |                                | ask (act) for (obj)               | 2 |
+--| | attack        | beat, fight, hit, punch        | attack (target)                   | 1 |
+--| | attack_with   |                                | attack (target) with (weapon)     | 2 |
+--| | bite          | chew                           | bite (obj)                        | 1 |
+--| | break         | destroy                        | break (obj)                       | 1 |
+--| | break_with    |                                | break (obj) with (instr)          | 2 |
+--| | burn          |                                | burn (obj)                        | 1 |
+--| | burn_with     |                                | burn (obj) with (instr)           | 2 |
+--| | buy           | purchase                       | buy (item)                        | 1 |
+--| | catch         |                                | catch (obj)                       | 1 |
+--| | clean         | polish, wipe                   | clean (obj)                       | 1 |
+--| | climb         |                                | climb (obj)                       | 1 |
+--| | climb_on      |                                | climb on (surface)                | 1 |
+--| | climb_through |                                | climb through (obj)               | 1 |
+--| | close         | shut                           | close (obj)                       | 1 |
+--| | close_with    |                                | close (obj) with (instr)          | 2 |
+--| | consult       |                                | consult (source) about (topic)    | 2 |
+--| | cut           |                                | cut (obj)                         | 1 |
+--| | cut_with      |                                | cut (obj) with (instr)            | 2 |
+--| | dance         |                                | dance                             | 0 |
+--| | dig           |                                | dig (obj)                         | 1 |
+--| | dive          |                                | dive                              | 0 |
+--| | dive_in       |                                | dive in (liq)                     | 1 |
+--| | drink         |                                | drink (liq)                       | 1 |
+--| | drive         |                                | drive (vehicle)                   | 1 |
+--| | drop          | discard, dump, reject          | drop (obj)                        | 1 |
+--| | eat           |                                | eat (food)                        | 1 |
+--| | empty         |                                | empty (obj)                       | 1 |
+--| | empty_in      |                                | empty (obj) in (cont)             | 2 |
+--| | empty_on      |                                | empty (obj) on (surface)          | 2 |
+--| | enter         |                                | enter (obj)                       | 1 |
+--| | examine       | X, check, inspect, observe     | examine (obj)                     | 1 |
+--| | exit          |                                | exit (obj)                        | 1 |
+--| | extinguish    | put out, quench                | extinguish (obj)                  | 1 |
+--| | fill          |                                | fill (cont)                       | 1 |
+--| | fill_with     |                                | fill (cont) with (substance)      | 2 |
+--| | find          | locate                         | find (obj)                        | 1 |
+--| | fire          |                                | fire (weapon)                     | 1 |
+--| | fire_at       |                                | fire (weapon) at (target)         | 2 |
+--| | fix           | mend, repair                   | fix (obj)                         | 1 |
+--| | follow        |                                | follow (act)                      | 1 |
+--| | free          | release                        | free (obj)                        | 1 |
+--| | get_up        |                                | get up                            | 0 |
+--| | get_off       |                                | get off (obj)                     | 1 |
+--| | give          |                                | give (obj) to (recipient)         | 2 |
+--| | go_to         |                                | go to (dest)                      | 1 |
+--| | i             | inv, inventory                 | inventory                         | 0 |
+--| | jump          |                                | jump                              | 0 |
+--| | jump_in       |                                | jump in (cont)                    | 1 |
+--| | jump_on       |                                | jump on (surface)                 | 1 |
+--| | kick          |                                | kick (target)                     | 1 |
+--| | kill          | murder                         | kill (victim)                     | 1 |
+--| | kill_with     |                                | kill (victim) with (weapon)       | 2 |
+--| | kiss          | hug, embrace                   | kiss (obj)                        | 1 |
+--| | knock (on)    |                                | knock on (obj)                    | 1 |
+--| | lie_down      |                                | lie down                          | 0 |
+--| | lie_in        |                                | lie in (cont)                     | 1 |
+--| | lie_on        |                                | lie on (surface)                  | 1 |
+--| | lift          |                                | lift (obj)                        | 1 |
+--| | light         | lit                            | light (obj)                       | 1 |
+--| | listen0       |                                | listen                            | 0 |
+--| | listen        |                                | listen to (obj)                   | 1 |
+--| | lock          |                                | lock (obj)                        | 1 |
+--| | lock_with     |                                | lock (obj) with (key)             | 2 |
+--| | look          | gaze, peek                     | look                              | 0 |
+--| | look_behind   |                                | look behind (bulk)                | 1 |
+--| | look_in       |                                | look in (cont)                    | 1 |
+--| | look_out_of   |                                | look out of (obj)                 | 1 |
+--| | look_through  |                                | look through (bulk)               | 1 |
+--| | look_under    |                                | look under (bulk)                 | 1 |
+--| | look_up       |                                | look up                           | 0 |
+--| | open          |                                | open (obj)                        | 1 |
+--| | open_with     |                                | open (obj) with (instr)           | 2 |
+--| | play          |                                | play (obj)                        | 1 |
+--| | play_with     |                                | play with (obj)                   | 1 |
+--| | pour          | (defined at `empty`)           | pour (obj)                        | 1 |
+--| | pour_in       | (defined at `emtpy_in`)        | pour (obj) in (cont)              | 2 |
+--| | pour_on       | (defined at `empty_on`)        | pour (obj) on (surface)           | 2 |
+--| | pray          |                                | pray                              | 0 |
+--| | pry           |                                | pry (obj)                         | 1 |
+--| | pry_with      |                                | pry (obj) with (instr)            | 2 |
+--| | pull          |                                | pull (obj)                        | 1 |
+--| | push          |                                | push (obj)                        | 1 |
+--| | push_with     |                                | push (obj) with (instr)           | 2 |
+--| | put           | lay, place                     | put (obj)                         | 1 |
+--| | put_against   |                                | put (obj) against (bulk))         | 2 |
+--| | put_behind    |                                | put (obj) behind (bulk)           | 2 |
+--| | put_down      | (defined at `drop`)            | put down (obj)                    | 1 |
+--| | put_in        | insert                         | put (obj) in (cont)               | 2 |
+--| | put_near      |                                | put (obj) near (bulk)             | 2 |
+--| | put_on        |                                | put (obj) on (surface)            | 2 |
+--| | put_under     |                                | put (obj) under (bulk)            | 2 |
+--| | read          |                                | read (obj)                        | 1 |
+--| | remove        |                                | remove (obj)                      | 1 |
+--| | rub           |                                | rub (obj)                         | 1 |
+--| | say           |                                | say (topic)                       | 1 |
+--| | say_to        |                                | say (topic) to (act)              | 2 |
+--| | score         |                                | score                             | 0 |
+--| | scratch       |                                | scratch (obj)                     | 1 |
+--| | search        |                                | search (obj)                      | 1 |
+--| | sell          |                                | sell (item)                       | 1 |
+--| | shake         |                                | shake (obj)                       | 1 |
+--| | shoot (at)    |                                | shoot at (target)                 | 1 |
+--| | shoot_with    |                                | shoot (target) with (weapon)      | 2 |
+--| | shout         | scream, yell                   | shout                             | 0 |
+--| | show          | reveal                         | show (obj) to (act)               | 2 |
+--| | sing          |                                | sing                              | 0 |
+--| | sip           |                                | sip (liq)                         | 1 |
+--| | sit (down)    |                                | sit.  sit down.                   | 0 |
+--| | sit_on        |                                | sit on (surface)                  | 1 |
+--| | sleep         | rest                           | sleep                             | 0 |
+--| | smell0        |                                | smell                             | 0 |
+--| | smell         |                                | smell (odour)                     | 1 |
+--| | squeeze       |                                | squeeze (obj)                     | 1 |
+--| | stand (up)    |                                | stand.  stand up.                 | 0 |
+--| | stand_on      |                                | stand on (surface)                | 1 |
+--| | swim          |                                | swim                              | 0 |
+--| | swim_in       |                                | swim in (liq)                     | 1 |
+--| | switch        |                                | switch (obj)                      | 1 |
+--| | switch_on     | (defined at `turn_on`)         | switch on (app)                   | 1 |
+--| | switch_off    | (defined at `turn_off`)        | switch off (app)                  | 1 |
+--| | take          | carry, get, grab, hold, obtain | take (obj)                        | 1 |
+--| | take_from     | remove from                    | take (obj) from (holder)          | 2 |
+--| | talk          |                                | talk                              | 0 |
+--| | talk_to       | speak                          | talk to (act)                     | 1 |
+--| | taste         | lick                           | taste (obj)                       | 1 |
+--| | tear          | rip                            | tear (obj)                        | 1 |
+--| | tell          | enlighten, inform              | tell (act) about (topic)          | 2 |
+--| | think         |                                | think                             | 0 |
+--| | think_about   |                                | think about (topic)               | 1 |
+--| | throw         |                                | throw (projectile)                | 1 |
+--| | throw_at      |                                | throw (projectile) at (target)    | 2 |
+--| | throw_in      |                                | throw (projectile) in (cont)      | 2 |
+--| | throw_to      |                                | throw (projectile) to (recipient) | 2 |
+--| | tie           |                                | tie (obj)                         | 1 |
+--| | tie_to        |                                | tie (obj) to (target)             | 2 |
+--| | touch         | feel                           | touch (obj)                       | 1 |
+--| | touch_with    | feel                           | touch (ogg) with (instr)          | 2 |
+--| | turn          | rotate                         | turn (obj)                        | 1 |
+--| | turn_on       |                                | turn on (app)                     | 1 |
+--| | turn_off      |                                | turn off (app)                    | 1 |
+--| | undress       |                                | undress                           | 0 |
+--| | unlock        |                                | unlock (obj)                      | 1 |
+--| | unlock_with   |                                | unlock (obj) with (key)           | 2 |
+--| | use           |                                | use (obj)                         | 1 |
+--| | use_with      |                                | use (obj) with (instr)            | 2 |
+--| | wait          | Z                              | wait                              | 0 |
+--| | wear          |                                | wear (obj)                        | 1 |
+--| | write         |                                | write (txt) on (obj)              | 2 |
+--| |===============================================================================================
+--<
 
 
 
@@ -816,34 +1231,6 @@ ADD TO EVERY OBJECT
         "wouldn't accomplish anything."
   END VERB break_with.
 END ADD TO.
-
-
-
--- ================================================================
-
-
------ BRIEF
-
-
--- ================================================================
-
-
--- Use "Visits 0." or "Visits 1000." in the START section if you want
--- the game to start in verbose or brief mode. (By default,
--- all games start in the verbose mode.)
-
-
-SYNTAX brief = brief.
-
-
-META VERB brief
-  CHECK my_game CAN brief
-    ELSE SAY restricted_response OF my_game.
-  DOES
-    Visits 1000.
-    "Brief mode is now on. Location descriptions will only be shown
-    the first time you visit."
-END VERB brief.
 
 
 
@@ -1500,34 +1887,6 @@ ADD TO EVERY THING
   END VERB consult_error.
 END ADD TO.
 
-
-
--- ==============================================================
-
-
------ CREDITS (+ acknowledgments, author, copyright)
-
-
--- ==============================================================
-
-
-SYNTAX credits = credits.
-
-SYNONYMS acknowledgments, author, copyright = credits.
-
-
-META VERB credits
-  CHECK my_game CAN credits
-    ELSE SAY restricted_response OF my_game.
-  DOES
-    "The author retains the copyright to this game.
-    $pThis game was written using the ALAN Adventure Language. ALAN is
-    an interactive fiction authoring system by Thomas Nilsson.
-    $nE-mail address: thomas@alanif.se $pFurther information
-    about the ALAN system can be obtained from
-    the World Wide Web Internet site
-    $ihttp://www.alanif.se$p"
-END VERB credits.
 
 
 
@@ -3339,42 +3698,6 @@ END ADD TO.
 
 
 
--- ==============================================================
-
-
------ HELP -> see ABOUT
-
-
--- ==============================================================
-
-
-
-
-
--- ==============================================================
-
-
------ HINT (+ hints)
-
-
--- ==============================================================
-
-
-SYNTAX hint = hint.
-
-SYNONYMS hints = hint.
-
-META VERB hint
-  CHECK my_game CAN hint
-    ELSE SAY restricted_response OF my_game.
-
-  DOES
-    "Unfortunately hints are not available in this game."
-END VERB hint.
-
-
-
-
 
 -- ==============================================================
 
@@ -4621,135 +4944,6 @@ END VERB look_up.
 
 
 
--- ==============================================================
-
-
------ NO
-
-
--- ==============================================================
-
-
-SYNTAX 'no' = 'no'.
-
-
-VERB 'no'
-  CHECK my_game CAN 'no'
-    ELSE SAY restricted_response OF my_game.
-  DOES "Really?"
-END VERB 'no'.
-
-
-
--- ==============================================================
-
-
------ NOTIFY
-
-
--- ==============================================================
-
-
--- Thanks to Steve Griffiths whose 'Score notification' sample was used
--- in declaring this verb.
-
-
-
-SYNTAX notify = notify.
-
-   notify_on = notify 'on'.
-    -- The instructions tell the player that mere 'notify'
-    -- is enough, but these two verbs are implemented
-   notify_off = notify 'off'.
-    -- In case (s)he adds the prepositions to the end anyway.
-
-
-META VERB notify
-  CHECK my_game CAN notify
-    ELSE SAY restricted_response OF my_game.
-  DOES
-    IF my_game HAS notify_turned_on
-      THEN MAKE my_game NOT notify_turned_on.
-        "Score notification is now disabled. (You can turn it back on
-        using the NOTIFY command again.)"
-      ELSE MAKE my_game notify_turned_on. "Score notification is now enabled.
-        (You can turn it off using the NOTIFY command again.)"
-    END IF.
-END VERB notify.
-
-
-META VERB notify_on
-  CHECK my_game CAN notify_on
-    ELSE SAY restricted_response OF my_game.
-  DOES
-    IF my_game HAS notify_turned_on
-      THEN "Score notification is already enabled."
-      ELSE MAKE my_game notify_turned_on.
-        "Score notification is now enabled.
-        (You can turn it off using the NOTIFY command again.)"
-    END IF.
-END VERB notify_on.
-
-
-META VERB notify_off
-  CHECK my_game CAN notify_off
-    ELSE SAY restricted_response OF my_game.
-  DOES
-    IF my_game HAS notify_turned_on
-      THEN MAKE my_game NOT notify_turned_on.
-        "Score notification is now disabled. (You can turn it back on
-        using the NOTIFY command again.)"
-      ELSE "Score notification is already disabled."
-    END IF.
-END VERB notify_off.
-
-
--- The 'notify' verb allows the players to disable the score change
--- messages. (Some players find such messages annoying.)
--- The verb toggles the hero's 'notify_on' attribute on and off. That
--- attribute is checked by the 'checkscore' event to determine whether
--- to display the score msg or not.
-
--- The following event is run each turn to check if the game score is greater than
--- the last recorded score (which is stored in the Hero's 'oldscore'
--- attribute). If the score is greater, then the 'Score has gone up...'
--- text is displayed (as long as the player hasn't disabled it by using the
--- 'notify' verb - which sets 'notify_on' to off
--- - i.e. the hero 'IS NOT notify_on'.)
-
--- NOTE: The ALAN scoring system records the game score in a thing called
--- score. It isn't called score OF anything; its just 'score'.
-
--- NOTE: This event assumes score can only increase, if score can go
--- down then you would need to modify this code a bit.
-
-
-EVENT check_score
-  IF oldscore OF my_game < score
-    THEN
-      IF my_game HAS notify_turned_on
-        THEN
-          -- ie: the player wants to see score msgs
-          "$p(Your score has just gone up by" SAY (score - oldscore OF my_game).
-          IF (score - oldscore OF my_game) = 1
-            THEN "point.)"
-            ELSE "points.)"
-          END IF.
-          -- this msg only displayed the first time player is notified
-          -- of a score change
-          IF my_game HAS NOT seen_notify
-            THEN MAKE my_game seen_notify.
-              "$p(You can use the NOTIFY command to disable score change messages.)"
-          END IF.
-      END IF.
-
-      SET oldscore OF my_game TO score.
-  END IF.
-  -- run the 'check_score' event again next turn:
-  SCHEDULE check_score AT hero AFTER 1.
-END EVENT.
-
-
 
 
 -- ==============================================================
@@ -5713,31 +5907,6 @@ END ADD TO.
 -- ==============================================================
 
 
------ QUIT
-
-
--- ==============================================================
-
-
-SYNTAX
-  'quit' = 'quit'.
-
-SYNONYMS q = 'quit'.
-
-
-META VERB 'quit'
-  CHECK my_game CAN 'quit'
-    ELSE SAY restricted_response OF my_game.
-  DOES
-    QUIT.
-END VERB 'quit'.
-
-
-
-
--- ==============================================================
-
-
 ----- READ
 
 
@@ -5847,47 +6016,6 @@ END ADD TO.
 
 
 
--- ==============================================================
-
-
------ RESTART
-
-
--- ==============================================================
-
-
-SYNTAX 'restart' = 'restart'.
-
-
-META VERB 'restart'
-  CHECK my_game CAN 'restart'
-    ELSE SAY restricted_response OF my_game.
-  DOES
-    RESTART.
-END VERB 'restart'.
-
-
-
--- ==============================================================
-
-
------ RESTORE
-
-
--- ==============================================================
-
-
-SYNTAX 'restore' = 'restore'.
-
-
-META VERB 'restore'
-  CHECK my_game CAN 'restore'
-    ELSE SAY restricted_response OF my_game.
-  DOES
-    RESTORE.
-END VERB 'restore'.
-
-
 
 -- ==============================================================
 
@@ -5947,27 +6075,6 @@ ADD TO EVERY THING
   END VERB rub.
 END ADD TO.
 
-
-
-
--- ==============================================================
-
-
------ SAVE
-
-
--- ==============================================================
-
-
-SYNTAX 'save' = 'save'.
-
-
-META VERB 'save'
-  CHECK my_game CAN 'save'
-    ELSE SAY restricted_response OF my_game.
-  DOES
-    SAVE.
-END VERB 'save'.
 
 
 
@@ -6132,50 +6239,6 @@ ADD TO EVERY THING
   END VERB scratch.
 END ADD TO.
 
-
-
-
--- ==============================================================
-
-
------- SCRIPT
-
-
--- ==============================================================
-
-
-SYNTAX 'script' = 'script'.
-       script_on = 'script' 'on'.
-       script_off = 'script' 'off'.
-
-SYNONYMS 'transcript' = 'script'.
-
-META VERB 'script'
-  CHECK my_game CAN 'script'
-    ELSE SAY restricted_response OF my_game.
-  DOES
-    "You can turn transcripting on and off using the 'script on/off' command within the game.
-    The transcript will be available in a file with a name starting with the game name.
-    $pIn a GUI version you can also find this in the drop-down menu in the interpreter.
-    $pIn a command line version you can start your game with the '-s' switch to get a transcript
-    of the whole game."
-END VERB 'script'.
-
-META VERB script_on
-  CHECK my_game CAN script_on
-    ELSE SAY restricted_response OF my_game.
-  DOES
-    TRANSCRIPT ON.
-    "Transcripting turned on."
-END VERB script_on.
-
-META VERB script_off
-  CHECK my_game CAN script_off
-    ELSE SAY restricted_response OF my_game.
-  DOES
-    TRANSCRIPT OFF.
-    "Transcripting turned off."
-END VERB script_off.
 
 
 
@@ -8707,29 +8770,6 @@ END ADD TO.
 -- ==============================================================
 
 
------ VERBOSE (see also -> BRIEF)
-
-
--- ==============================================================
-
-
-SYNTAX verbose = verbose.
-
-
-META VERB verbose
-  CHECK my_game CAN verbose
-    ELSE SAY restricted_response OF my_game.
-  DOES
-    VISITS 0.
-    "Verbose mode is now on. Location descriptions will be
-    always shown in full."
-END VERB verbose.
-
-
-
--- ==============================================================
-
-
 ----- WAIT (= z)
 
 
@@ -8807,6 +8847,163 @@ ADD TO EVERY OBJECT
 
   END VERB wear.
 END ADD TO.
+
+
+
+
+-- ==============================================================
+
+
+----- WRITE
+
+
+-- ==============================================================
+
+
+SYNTAX write = write (txt) 'on' (obj)
+  WHERE txt ISA STRING
+    ELSE SAY illegal_parameter_string OF my_game.
+  AND obj ISA OBJECT
+    ELSE SAY illegal_parameter2_there OF my_game.
+
+       write = write (txt) 'in' (obj).
+
+
+ADD TO EVERY OBJECT
+  VERB write
+    WHEN obj
+      CHECK my_game CAN write
+        ELSE SAY restricted_response OF my_game.
+      AND obj IS writeable
+        ELSE SAY check_obj_writeable OF my_game.
+      AND CURRENT LOCATION IS lit
+        ELSE SAY check_current_loc_lit OF my_game.
+      AND obj IS reachable AND obj IS NOT distant
+        ELSE
+          IF obj IS NOT reachable
+            THEN
+              IF obj IS NOT plural
+                THEN SAY check_obj_reachable_sg OF my_game.
+                ELSE SAY check_obj_reachable_pl OF my_game.
+              END IF.
+          ELSIF obj IS distant
+            THEN
+              IF obj IS NOT plural
+                THEN SAY check_obj_not_distant_sg OF my_game.
+                ELSE SAY check_obj_not_distant_pl OF my_game.
+              END IF.
+          END IF.
+
+    DOES
+      "You don't have anything to write with."
+
+      -- To make it work:
+        -- IF text OF obj = ""
+        -- THEN SET text OF obj TO txt.
+        -- ELSE SET text OF obj TO text OF obj + " " + txt.
+        -- END IF.
+
+      -- "You write ""$$" SAY txt. "$$"" on" SAY THE obj. "."
+        -- MAKE obj readable.
+
+  END VERB write.
+END ADD TO.
+
+
+-- A couple of other formulations are understood but they guide the player to
+-- use the correct syntax:
+
+
+SYNTAX write_error1 = write 'on' (obj)
+  WHERE obj ISA OBJECT
+    ELSE "Please use the formulation WRITE ""TEXT"" ON (IN) OBJECT
+          to write something."
+
+
+ADD TO EVERY OBJECT
+  VERB write_error1
+    DOES "Please use the formulation WRITE ""TEXT"" ON (IN) OBJECT
+          to write something."
+  END VERB write_error1.
+END ADD TO.
+
+
+SYNTAX write_error2 = write.
+
+VERB write_error2
+  DOES "Please use the formulation WRITE ""TEXT"" ON (IN) OBJECT
+        to write something."
+END VERB write_error2.
+
+
+SYNTAX write_error3 = write (txt)
+  WHERE txt ISA STRING
+    ELSE "Please use the formulation WRITE ""TEXT"" ON (IN) OBJECT
+          to write something."
+
+
+ADD TO EVERY STRING
+  VERB write_error3
+    DOES "Please use the formulation WRITE ""TEXT"" ON (IN) OBJECT
+          to write something."
+  END VERB write_error3.
+END ADD TO.
+
+-->questions_verbs(30000)
+--~=============================================================================
+--~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~-----------------------------------------------------------------------------
+--|
+--| == Questions and Answers Verbs
+--|
+--~-----------------------------------------------------------------------------
+--~* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--~=============================================================================
+--| 
+--| This group includes all those verbs which don't follow the usual convention
+--| of imparting a direct command to the main character (e.g. "`take apple`"),
+--| but instead are questions or answers provided by the main character itself
+--| (e.g. "`who am I?`", "`yes`", "`where is the treasure?`").
+--<
+
+-->table_questions_verbs(1030)
+--| === Table of Questions and Answers Verbs
+--| [cols="15m,25d,35d,2*^5d",options="header"]
+--| |===================================================
+--| | VERB       | SYNONYMS | SYNTAX         | A |  M 
+--~ +------------+----------+----------------+---+-----+
+--| | no         |          | no             | 0 |
+--| | what_am_i  |          | what am i      | 0 |
+--| | what_is    |          | what is (obj)  | 1 |
+--| | where_am_i |          | where am i     | 0 |
+--| | where_is   |          | where is (obj) | 1 |
+--| | who_am_i   |          | who am i       | 0 |
+--| | who_is     |          | who is (act)   | 1 |
+--| | yes        |          | yes            | 0 |
+--| |===================================================
+--<
+
+
+
+-- ==============================================================
+
+
+----- NO
+
+
+-- ==============================================================
+
+
+SYNTAX 'no' = 'no'.
+
+
+VERB 'no'
+  CHECK my_game CAN 'no'
+    ELSE SAY restricted_response OF my_game.
+  DOES "Really?"
+END VERB 'no'.
 
 
 
@@ -8972,106 +9169,6 @@ END ADD TO.
 
 
 
--- ==============================================================
-
-
------ WRITE
-
-
--- ==============================================================
-
-
-SYNTAX write = write (txt) 'on' (obj)
-  WHERE txt ISA STRING
-    ELSE SAY illegal_parameter_string OF my_game.
-  AND obj ISA OBJECT
-    ELSE SAY illegal_parameter2_there OF my_game.
-
-       write = write (txt) 'in' (obj).
-
-
-ADD TO EVERY OBJECT
-  VERB write
-    WHEN obj
-      CHECK my_game CAN write
-        ELSE SAY restricted_response OF my_game.
-      AND obj IS writeable
-        ELSE SAY check_obj_writeable OF my_game.
-      AND CURRENT LOCATION IS lit
-        ELSE SAY check_current_loc_lit OF my_game.
-      AND obj IS reachable AND obj IS NOT distant
-        ELSE
-          IF obj IS NOT reachable
-            THEN
-              IF obj IS NOT plural
-                THEN SAY check_obj_reachable_sg OF my_game.
-                ELSE SAY check_obj_reachable_pl OF my_game.
-              END IF.
-          ELSIF obj IS distant
-            THEN
-              IF obj IS NOT plural
-                THEN SAY check_obj_not_distant_sg OF my_game.
-                ELSE SAY check_obj_not_distant_pl OF my_game.
-              END IF.
-          END IF.
-
-    DOES
-      "You don't have anything to write with."
-
-      -- To make it work:
-        -- IF text OF obj = ""
-        -- THEN SET text OF obj TO txt.
-        -- ELSE SET text OF obj TO text OF obj + " " + txt.
-        -- END IF.
-
-      -- "You write ""$$" SAY txt. "$$"" on" SAY THE obj. "."
-        -- MAKE obj readable.
-
-  END VERB write.
-END ADD TO.
-
-
--- A couple of other formulations are understood but they guide the player to
--- use the correct syntax:
-
-
-SYNTAX write_error1 = write 'on' (obj)
-  WHERE obj ISA OBJECT
-    ELSE "Please use the formulation WRITE ""TEXT"" ON (IN) OBJECT
-          to write something."
-
-
-ADD TO EVERY OBJECT
-  VERB write_error1
-    DOES "Please use the formulation WRITE ""TEXT"" ON (IN) OBJECT
-          to write something."
-  END VERB write_error1.
-END ADD TO.
-
-
-SYNTAX write_error2 = write.
-
-VERB write_error2
-  DOES "Please use the formulation WRITE ""TEXT"" ON (IN) OBJECT
-        to write something."
-END VERB write_error2.
-
-
-SYNTAX write_error3 = write (txt)
-  WHERE txt ISA STRING
-    ELSE "Please use the formulation WRITE ""TEXT"" ON (IN) OBJECT
-          to write something."
-
-
-ADD TO EVERY STRING
-  VERB write_error3
-    DOES "Please use the formulation WRITE ""TEXT"" ON (IN) OBJECT
-          to write something."
-  END VERB write_error3.
-END ADD TO.
-
-
-
 -- ================================================================
 
 
@@ -9092,5 +9189,30 @@ END VERB yes.
 
 
 
--- end of file.
+-- =============================================================================
+-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+-- -----------------------------------------------------------------------------
+-- 
+-- UNSORTED ..... 
+-- 
+-- -----------------------------------------------------------------------------
+-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+-- =============================================================================
 
+
+
+-->custom_attributes(100)
+--| ////
+--| ============================================================================
+--| Custom AsciiDoc Attributes for Doxter
+--| ============================================================================
+--| ////
+
+--| // Define substitution of {X} with Unicode character 'heavy check mark'
+--| // (U+2714), used in verbs tables:
+--| :X: &#x2714;
+--<
+
+---< End of File >---
