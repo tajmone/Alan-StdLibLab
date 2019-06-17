@@ -209,6 +209,8 @@
 
 SYNTAX 'about' = 'about'.
 
+SYNONYMS help, info = 'about'.
+
 
 META VERB 'about'
   CHECK my_game CAN about
@@ -227,9 +229,6 @@ META VERB 'about'
 END VERB 'about'.
 
 
-SYNONYMS help, info = 'about'.
-
-
 
 -- =============================================================
 
@@ -242,6 +241,8 @@ SYNONYMS help, info = 'about'.
 
 SYNTAX again = again.
 
+SYNONYMS g = again.
+
 
 VERB again
   CHECK my_game CAN 'again'
@@ -251,8 +252,6 @@ VERB again
      the 'up' and 'down' arrow keys to scroll through your previous commands.]"
 END VERB again.
 
-
-SYNONYMS g = again.
 
 
 
@@ -269,6 +268,7 @@ SYNTAX answer = answer (topic)
   WHERE topic ISA STRING
     ELSE SAY illegal_parameter_string OF my_game.
 
+SYNONYMS reply = answer.
 
 ADD TO EVERY STRING
   VERB answer
@@ -279,8 +279,6 @@ ADD TO EVERY STRING
     END VERB answer.
 END ADD TO.
 
-
-SYNONYMS reply = answer.
 
 
 -- =============================================================
@@ -469,6 +467,8 @@ END ADD TO.
 
 -- =============================================================
 
+-- Note that 'kick' is defined separately, to avoid absurd commands such as
+-- 'kick man with sword' (see 'attack_with' below)
 
 SYNTAX attack = attack (target)
   WHERE target ISA THING
@@ -477,6 +477,8 @@ SYNTAX attack = attack (target)
         THEN SAY illegal_parameter_sg OF my_game.
         ELSE SAY illegal_parameter_pl OF my_game.
       END IF.
+
+SYNONYMS beat, fight, hit, punch = attack.
 
 
 ADD TO EVERY THING
@@ -525,10 +527,6 @@ ADD TO EVERY THING
 END ADD TO.
 
 
-SYNONYMS beat, fight, hit, punch = attack.
-
--- Note that 'kick' is defined separately, to avoid absurd commands such as
--- 'kick man with sword' (see 'attack_with' below)
 
 
 
@@ -624,6 +622,7 @@ SYNTAX bite = bite (obj)
         ELSE SAY illegal_parameter_pl OF my_game.
       END IF.
 
+SYNONYMS chew = bite.
 
 
 ADD TO EVERY OBJECT
@@ -680,8 +679,6 @@ ADD TO EVERY OBJECT
 END ADD TO.
 
 
-SYNONYMS chew = bite.
-
 
 
 -- ===============================================================
@@ -700,6 +697,8 @@ SYNTAX break = break (obj)
         THEN SAY illegal_parameter_sg OF my_game.
         ELSE SAY illegal_parameter_pl OF my_game.
       END IF.
+
+SYNONYMS destroy = break.
 
 
 ADD TO EVERY OBJECT
@@ -735,8 +734,6 @@ ADD TO EVERY OBJECT
   END VERB break.
 END ADD TO.
 
-
-SYNONYMS destroy = break.
 
 
 
@@ -964,6 +961,8 @@ SYNTAX buy = buy (item)
         ELSE SAY illegal_parameter_pl OF my_game.
       END IF.
 
+SYNONYMS purchase = buy.
+
 
 ADD TO EVERY OBJECT
   VERB buy
@@ -985,8 +984,6 @@ ADD TO EVERY OBJECT
   END VERB buy.
 END ADD TO.
 
-
-SYNONYMS purchase = buy.
 
 
 
@@ -1046,6 +1043,7 @@ END ADD TO.
 
 -- ==================================================================
 
+----- notice that 'rub' is defined separately
 
 SYNTAX clean = clean (obj)
   WHERE obj ISA OBJECT
@@ -1055,6 +1053,8 @@ SYNTAX clean = clean (obj)
         ELSE SAY illegal_parameter_pl OF my_game.
       END IF.
 
+
+SYNONYMS wipe, polish = clean.
 
 
 ADD TO EVERY OBJECT
@@ -1090,11 +1090,6 @@ ADD TO EVERY OBJECT
   END VERB clean.
 END ADD TO.
 
-
-SYNONYMS wipe, polish = clean.
-
-
------ notice that 'rub' is defined separately
 
 
 
@@ -1294,6 +1289,9 @@ SYNTAX close = close (obj)
       END IF.
 
 
+SYNONYMS shut = close.
+
+
 ADD TO EVERY OBJECT
   VERB close
     CHECK my_game CAN close
@@ -1333,9 +1331,6 @@ ADD TO EVERY OBJECT
       "You close" SAY THE obj. "."
   END VERB close.
 END ADD TO.
-
-
-SYNONYMS shut = close.
 
 
 
@@ -1507,6 +1502,8 @@ END ADD TO.
 
 SYNTAX credits = credits.
 
+SYNONYMS acknowledgments, author, copyright = credits.
+
 
 META VERB credits
   CHECK my_game CAN credits
@@ -1521,8 +1518,6 @@ META VERB credits
     $ihttp://www.alanif.se$p"
 END VERB credits.
 
-
-SYNONYMS acknowledgments, author, copyright = credits.
 
 
 
@@ -1965,6 +1960,7 @@ SYNTAX drop = drop (obj)*
 
         drop = put down (obj)*.
 
+SYNONYMS discard, dump, reject = drop.
 
 ADD TO EVERY OBJECT
   VERB drop
@@ -1982,8 +1978,6 @@ ADD TO EVERY OBJECT
 END ADD TO.
 
 
-SYNONYMS
-  discard, dump, reject = drop.
 
 
 
@@ -2490,6 +2484,8 @@ SYNTAX examine = examine (obj)
         examine = 'look' (obj).
         -- note that this formulation is allowed, too
 
+SYNONYMS 'check', inspect, observe, x = examine.
+
 
 ADD TO EVERY THING
   VERB examine
@@ -2534,9 +2530,6 @@ ADD TO EVERY THING
   END VERB examine.
 END ADD TO.
 
-
-SYNONYMS
-  'check', inspect, observe, x = examine.
 
 
 
@@ -2614,6 +2607,8 @@ SYNTAX extinguish = extinguish (obj)
 
         extinguish = put (obj) 'out'.
 
+SYNONYMS quench = extinguish.
+
 
 ADD TO EVERY OBJECT
   VERB extinguish
@@ -2650,8 +2645,6 @@ ADD TO EVERY OBJECT
   END VERB extinguish.
 END ADD TO.
 
-
-SYNONYMS quench = extinguish.
 
 
 
@@ -2805,6 +2798,8 @@ SYNTAX
           ELSE SAY illegal_parameter_pl OF my_game.
         END IF.
 
+SYNONYMS 'locate' = find.
+
 
 ADD TO EVERY THING
   VERB find
@@ -2826,8 +2821,6 @@ ADD TO EVERY THING
   END VERB find.
 END ADD TO.
 
-
-SYNONYMS 'locate' = find.
 
 
 
@@ -2968,6 +2961,8 @@ SYNTAX fix = fix (obj)
         ELSE SAY illegal_parameter_pl OF my_game.
       END IF.
 
+SYNONYMS mend, repair = fix.
+
 
 ADD TO EVERY OBJECT
   VERB fix
@@ -3002,8 +2997,6 @@ ADD TO EVERY OBJECT
   END VERB fix.
 END ADD TO.
 
-
-SYNONYMS mend, repair = fix.
 
 
 
@@ -3071,6 +3064,8 @@ SYNTAX free = free (obj)
         ELSE SAY illegal_parameter_pl OF my_game.
       END IF.
 
+SYNONYMS release = free.
+
 
 ADD TO EVERY THING
   VERB free
@@ -3110,8 +3105,6 @@ ADD TO EVERY THING
   END VERB free.
 END ADD TO.
 
-
-SYNONYMS release = free.
 
 
 
@@ -3199,6 +3192,8 @@ SYNTAX give = 'give' (obj) 'to' (recipient)
       END IF.
 
 
+SYNONYMS hand, offer = give.
+
 
 ADD TO EVERY OBJECT
   VERB give
@@ -3266,8 +3261,6 @@ ADD TO EVERY OBJECT
 END ADD TO.
 
 
-SYNONYMS hand, offer = give.
-
 
 
 -- ==============================================================
@@ -3284,6 +3277,12 @@ SYNTAX go_to = 'to' (dest)!
   -- The player will still be able to type 'go to [dest]' successfully.
   WHERE dest ISA THING
     ELSE SAY illegal_parameter_go OF my_game.
+
+SYNONYMS walk = go.
+  -- here we define a synonym for the predefined parser word 'go'
+  -- which is not visible in the syntax itself.
+  -- Thus, you will be able to say for example both 'go to shop' and 'walk to shop'
+  -- (as well as for example both 'go east' and 'walk east').
 
 
 ADD TO EVERY THING
@@ -3327,12 +3326,6 @@ ADD TO EVERY THING
 END ADD TO.
 
 
-SYNONYMS walk = go.
-  -- here we define a synonym for the predefined parser word 'go'
-  -- which is not visible in the syntax itself.
-  -- Thus, you will be able to say for example both 'go to shop' and 'walk to shop'
-  -- (as well as for example both 'go east' and 'walk east').
-
 
 
 -- ==============================================================
@@ -3358,6 +3351,7 @@ SYNONYMS walk = go.
 
 SYNTAX hint = hint.
 
+SYNONYMS hints = hint.
 
 META VERB hint
   CHECK my_game CAN hint
@@ -3368,8 +3362,6 @@ META VERB hint
 END VERB hint.
 
 
-SYNONYMS
-  hints = hint.
 
 
 
@@ -3384,6 +3376,8 @@ SYNONYMS
 
 
 SYNTAX i = i.
+
+SYNONYMS inv, inventory  = i.
 
 
 VERB i
@@ -3431,8 +3425,6 @@ VERB i
     END IF.
 END VERB i.
 
-
-SYNONYMS inv, inventory  = i.
 
 
 
@@ -3733,6 +3725,8 @@ SYNTAX kiss = kiss (obj)
         ELSE SAY illegal_parameter_pl OF my_game.
       END IF.
 
+SYNONYMS hug, embrace = kiss.
+
 
 ADD TO EVERY THING
   VERB kiss
@@ -3773,8 +3767,6 @@ ADD TO EVERY THING
   END VERB kiss.
 END ADD TO.
 
-
-SYNONYMS hug, embrace = kiss.
 
 
 
@@ -4043,6 +4035,8 @@ SYNTAX lift = lift (obj)
         ELSE SAY illegal_parameter_pl OF my_game.
       END IF.
 
+SYNONYMS raise = lift.
+
 
 ADD TO EVERY OBJECT
   VERB lift
@@ -4089,8 +4083,6 @@ ADD TO EVERY OBJECT
 END ADD TO.
 
 
-SYNONYMS raise = lift.
-
 
 -- ==============================================================
 
@@ -4108,6 +4100,8 @@ SYNTAX light = light (obj)
         THEN SAY illegal_parameter_sg OF my_game.
         ELSE SAY illegal_parameter_pl OF my_game.
       END IF.
+
+SYNONYMS lit = light.
 
 
 ADD TO EVERY OBJECT
@@ -4146,8 +4140,6 @@ ADD TO EVERY OBJECT
   END VERB light.
 END ADD TO.
 
-
-SYNONYMS lit = light.
 
 
 
@@ -4385,6 +4377,8 @@ END ADD TO.
 
 SYNTAX 'look' = 'look'.
 
+SYNONYMS l = 'look'.
+
 
 VERB 'look'
   CHECK my_game CAN 'look'
@@ -4395,8 +4389,6 @@ VERB 'look'
     LOOK.
 END VERB 'look'.
 
-
-SYNONYMS l = 'look'.
 
 
 
@@ -5243,6 +5235,8 @@ SYNTAX push = push (obj)
         ELSE SAY illegal_parameter_pl OF my_game.
       END IF.
 
+SYNONYMS press = push.
+
 
 ADD TO EVERY THING
   VERB push
@@ -5278,8 +5272,6 @@ ADD TO EVERY THING
   END VERB push.
 END ADD TO.
 
-
-SYNONYMS press = push.
 
 
 
@@ -5364,6 +5356,8 @@ SYNTAX put = put (obj)
     ELSE SAY illegal_parameter_obj OF my_game.
 
 
+SYNONYMS lay, place = put.
+
 
 ADD TO EVERY OBJECT
   VERB put
@@ -5384,8 +5378,6 @@ ADD TO EVERY OBJECT
   END VERB put.
 END ADD TO.
 
-
-SYNONYMS lay, place = put.
 
 
 
@@ -5719,6 +5711,8 @@ END ADD TO.
 SYNTAX
   'quit' = 'quit'.
 
+SYNONYMS q = 'quit'.
+
 
 META VERB 'quit'
   CHECK my_game CAN 'quit'
@@ -5727,8 +5721,6 @@ META VERB 'quit'
     QUIT.
 END VERB 'quit'.
 
-
-SYNONYMS q = 'quit'.
 
 
 
@@ -5903,6 +5895,8 @@ SYNTAX rub = rub (obj)
         ELSE SAY illegal_parameter_pl OF my_game.
       END IF.
 
+SYNONYMS massage = rub.
+
 
 ADD TO EVERY THING
   VERB rub
@@ -5942,8 +5936,6 @@ ADD TO EVERY THING
   END VERB rub.
 END ADD TO.
 
-
-SYNONYMS massage = rub.
 
 
 
@@ -6483,6 +6475,8 @@ END ADD TO.
 
 SYNTAX shout = shout.
 
+SYNONYMS scream, yell = shout.
+
 
 VERB shout
   CHECK my_game CAN shout
@@ -6491,8 +6485,6 @@ VERB shout
         "Nothing results from your $ving."
 END VERB shout.
 
-
-SYNONYMS scream, yell = shout.
 
 
 
@@ -6518,6 +6510,8 @@ SYNTAX 'show' = 'show' (obj) 'to' (act)
         THEN SAY illegal_parameter2_to_sg OF my_game.
         ELSE SAY illegal_parameter2_to_pl OF my_game.
       END IF.
+
+SYNONYMS reveal = 'show'.
 
 
 ADD TO EVERY OBJECT
@@ -6549,8 +6543,6 @@ ADD TO EVERY OBJECT
 END ADD TO.
 
 
-SYNONYMS reveal = 'show'.
-
 
 
 -- ==============================================================
@@ -6564,6 +6556,8 @@ SYNONYMS reveal = 'show'.
 
 SYNTAX sing = sing.
 
+SYNONYMS hum, whistle = sing.
+
 
 VERB sing
   CHECK my_game CAN sing
@@ -6572,8 +6566,6 @@ VERB sing
     "You $v a little tune."
 END VERB sing.
 
-
-SYNONYMS hum, whistle = sing.
 
 
 
@@ -6779,6 +6771,8 @@ END ADD TO.
 
 SYNTAX sleep = sleep.
 
+SYNONYMS rest = sleep.
+
 
 VERB sleep
   CHECK my_game CAN sleep
@@ -6787,8 +6781,6 @@ VERB sleep
     "There's no need to $v right now."
 END VERB sleep.
 
-
-SYNONYMS rest = sleep.
 
 
 
@@ -7158,6 +7150,8 @@ SYNTAX take = take (obj)
 
         take = pick (obj) up.
 
+SYNONYMS carry, grab, hold, obtain = take.
+
 
 ADD TO EVERY THING
   VERB take
@@ -7205,7 +7199,7 @@ ADD TO EVERY THING
               ELSE SAY check_obj_not_distant_pl OF my_game.
             END IF.
         END IF.
-    AND weight Of obj < 50
+    AND weight OF obj < 50
       ELSE
         IF obj IS NOT plural
           THEN SAY check_obj_weight_sg OF my_game.
@@ -7230,9 +7224,6 @@ ADD TO EVERY THING
   END VERB take.
 END ADD TO.
 
-
-SYNONYMS
-  carry, grab, hold, obtain = take.
 
 
 
@@ -7320,7 +7311,7 @@ ADD TO EVERY THING
                 ELSE SAY check_obj2_not_distant_pl OF my_game.
               END IF.
           END IF.
-      AND weight Of obj < 50
+      AND weight OF obj < 50
         ELSE
           IF obj IS NOT plural
             THEN SAY check_obj_weight_sg OF my_game.
@@ -7447,6 +7438,8 @@ SYNTAX taste = taste (obj)
         ELSE SAY illegal_parameter_pl OF my_game.
       END IF.
 
+SYNONYMS lick = taste.
+
 
 ADD TO EVERY OBJECT
   VERB taste
@@ -7489,8 +7482,6 @@ ADD TO EVERY OBJECT
 END ADD TO.
 
 
-SYNONYMS lick = taste.
-
 
 
 -- ==============================================================
@@ -7509,6 +7500,8 @@ SYNTAX tear = tear (obj)
         THEN SAY illegal_parameter_sg OF my_game.
         ELSE SAY illegal_parameter_pl OF my_game.
       END IF.
+
+SYNONYMS rip = tear.
 
 
 ADD TO EVERY OBJECT
@@ -7546,8 +7539,6 @@ ADD TO EVERY OBJECT
 END ADD TO.
 
 
-SYNONYMS rip = tear.
-
 
 
 -- ==============================================================
@@ -7572,6 +7563,8 @@ SYNTAX tell = tell (act) about (topic)!
         THEN SAY illegal_parameter_about_sg OF my_game.
         ELSE SAY illegal_parameter_about_pl OF my_game.
       END IF.
+
+SYNONYMS enlighten, inform = tell.
 
 
 ADD TO EVERY ACTOR
@@ -7606,8 +7599,6 @@ ADD TO EVERY ACTOR
 END ADD TO.
 
 
-SYNONYMS enlighten, inform = tell.
-
 
 
 -- ==============================================================
@@ -7621,6 +7612,8 @@ SYNONYMS enlighten, inform = tell.
 
 SYNTAX think = think.
 
+SYNONYMS ponder, meditate, reflect = think.
+
 
 VERB think
   CHECK my_game CAN think
@@ -7629,8 +7622,6 @@ VERB think
     "Nothing helpful comes to your mind."
 END VERB think.
 
-
-SYNONYMS ponder, meditate, reflect = think.
 
 
 
@@ -8161,6 +8152,8 @@ SYNTAX touch = touch (obj)
         ELSE SAY illegal_parameter_pl OF my_game.
       END IF.
 
+SYNONYMS feel = touch.
+
 
 ADD TO EVERY THING
   VERB touch
@@ -8200,8 +8193,6 @@ ADD TO EVERY THING
   END VERB touch.
 END ADD TO.
 
-
-SYNONYMS feel = touch.
 
 
 
@@ -8736,6 +8727,8 @@ END VERB verbose.
 
 SYNTAX 'wait' = 'wait'.
 
+SYNONYMS z = 'wait'.
+
 
 VERB 'wait'
   CHECK my_game CAN 'wait'
@@ -8744,9 +8737,6 @@ VERB 'wait'
     "Time passes..."
 END VERB 'wait'.
 
-
-SYNONYMS
-  z = 'wait'.
 
 
 
