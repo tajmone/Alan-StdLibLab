@@ -1,3 +1,14 @@
+--= Alan StdLib Fork: Runtime Messages
+--| Tristano Ajmone <tajmone@gmail.com>
+--~-----------------------------------------------------------------------------
+--~ "lib_messages_runtime.i"
+--|=============================================================================
+--| Adaptation of the `lib_verbs.i` module, taken from
+--| _ALAN Standard Library_ v2.1, (C) Anssi Räisänen, Artistic License 2.0.
+--| Edited by Tristano Ajmone,  (C) 2019, Artistic License 2.0.
+--|=============================================================================
+
+
 -- ALAN Standard Library v2.1
 -- Messages (file name: 'lib_messages.i')
 
