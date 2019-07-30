@@ -237,7 +237,7 @@ EVERY clothing ISA OBJECT
   -- Items which are 'twopieces' (eg. a bikini) can be worn/removed while
   -- wearing a skirt for, although handled as a single clothing item, they cover
   -- legs and torso via two separate pieces.
-  
+
   INITIALIZE
 
     -- Any objects inside a clothing item (e.g. a wallet in a jacket) will be
@@ -1294,11 +1294,20 @@ EVERY liquid ISA OBJECT
     SCHEDULE check_vessel AT THIS AFTER 0.    -- this event is defined further below
 
 
-  VERB examine
+  VERB examine -- LIQUID
     DOES ONLY
       IF vessel OF THIS <> null_vessel
         THEN
           IF vessel OF THIS IS open
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~   FIXME!
+-- *** PROBLEMATIC CONDITION *** This condition can never occur if the vessel
+-- of the liquid is a 'listed_container' because the library caters to make
+-- all closed containers OPAQUE, so their contents (i.e. the liquid) will not
+-- be in scope to the player command (i.e. "You can't see XXX here").
+-- Although this conditional check would be useful to handle transparent
+-- containers (which are not opaque when closed), currently the Library doesn't
+-- cover this possibility in an adequate manner.
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
             THEN "You notice nothing unusual about" SAY THE THIS.
             ELSE "You can't, since" SAY THE vessel OF THIS.
               IF THIS IS NOT plural
@@ -1314,11 +1323,20 @@ EVERY liquid ISA OBJECT
   END VERB examine.
 
 
-  VERB look_in
+  VERB look_in -- LIQUID
     DOES ONLY
       IF vessel OF THIS <> null_vessel
         THEN
           IF vessel OF THIS IS open
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~   FIXME!
+-- *** PROBLEMATIC CONDITION *** This condition can never occur if the vessel
+-- of the liquid is a 'listed_container' because the library caters to make
+-- all closed containers OPAQUE, so their contents (i.e. the liquid) will not
+-- be in scope to the player command (i.e. "You can't see XXX here").
+-- Although this conditional check would be useful to handle transparent
+-- containers (which are not opaque when closed), currently the Library doesn't
+-- cover this possibility in an adequate manner.
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
             THEN "You see nothing special in" SAY THE THIS. "."
             ELSE "You can't, since" SAY THE vessel OF THIS.
               IF THIS IS NOT plural
@@ -1334,7 +1352,7 @@ EVERY liquid ISA OBJECT
   END VERB look_in.
 
 
-  VERB take
+  VERB take -- LIQUID
     CHECK vessel OF THIS NOT IN hero
       ELSE SAY check_obj_not_in_hero2 OF my_game.
     DOES ONLY
@@ -1346,7 +1364,7 @@ EVERY liquid ISA OBJECT
   END VERB take.
 
 
-  VERB take_from
+  VERB take_from -- LIQUID
      WHEN obj
     CHECK holder <> vessel OF THIS
       ELSE SAY check_liquid_vessel_not_cont OF my_game.
@@ -1361,7 +1379,7 @@ EVERY liquid ISA OBJECT
   END VERB take_from.
 
 
-  VERB drop
+  VERB drop -- LIQUID
     DOES ONLY
       LOCATE vessel OF THIS AT hero.
       "($$" SAY THE vessel OF THIS. "of" SAY THIS. "$$)$nDropped."
@@ -1369,7 +1387,7 @@ EVERY liquid ISA OBJECT
   END VERB drop.
 
 
-  VERB ask_for
+  VERB ask_for -- LIQUID
     DOES ONLY
       -- Let's preserve the current state of compliance of act:
       IF act IS compliant
@@ -1388,7 +1406,7 @@ EVERY liquid ISA OBJECT
   END VERB ask_for.
 
 
-  VERB give
+  VERB give -- LIQUID
     WHEN obj
     DOES ONLY
       -- >>> implicit take >>>
@@ -1415,7 +1433,7 @@ EVERY liquid ISA OBJECT
   END VERB give.
 
 
-  VERB pour
+  VERB pour -- LIQUID
     DOES ONLY
       -- >>> implicit take >>>
       IF THIS NOT IN hero
@@ -1446,7 +1464,7 @@ EVERY liquid ISA OBJECT
   END VERB pour.
 
 
-  VERB pour_in
+  VERB pour_in -- LIQUID
     WHEN obj
       DOES ONLY
         -- >>> implicit take >>>
@@ -1474,6 +1492,15 @@ EVERY liquid ISA OBJECT
             "There's not much sense pouring" SAY THE obj. "into" SAY THE THIS. "."
           ELSE
             IF vessel OF THIS IS open
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~   FIXME!
+-- *** PROBLEMATIC CONDITION *** This condition can never occur if the vessel
+-- of the liquid is a 'listed_container' because the library caters to make
+-- all closed containers OPAQUE, so their contents (i.e. the liquid) will not
+-- be in scope to the player command (i.e. "You can't see XXX here").
+-- Although this conditional check would be useful to handle transparent
+-- containers (which are not opaque when closed), currently the Library doesn't
+-- cover this possibility in an adequate manner.
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
               THEN "It wouldn't accomplish anything trying to pour" SAY THE obj.
                 "into" SAY THE THIS. "."
               ELSE "You can't, since" SAY THE vessel OF THIS.
@@ -1487,7 +1514,7 @@ EVERY liquid ISA OBJECT
   END VERB pour_in.
 
 
-  VERB pour_on
+  VERB pour_on -- LIQUID
     WHEN obj
       DOES ONLY
         -- >>> implicit take >>>
@@ -1520,7 +1547,7 @@ EVERY liquid ISA OBJECT
   END VERB pour_on.
 
 
-  VERB put_in
+  VERB put_in -- LIQUID
     WHEN obj
       DOES ONLY
         IF vessel OF THIS = null_vessel
@@ -1552,6 +1579,15 @@ EVERY liquid ISA OBJECT
           "There's not much sense putting" SAY THE obj. "into" SAY THE THIS. "."
         ELSE
           IF vessel OF THIS IS open
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~   FIXME!
+-- *** PROBLEMATIC CONDITION *** This condition can never occur if the vessel
+-- of the liquid is a 'listed_container' because the library caters to make
+-- all closed containers OPAQUE, so their contents (i.e. the liquid) will not
+-- be in scope to the player command (i.e. "You can't see XXX here").
+-- Although this conditional check would be useful to handle transparent
+-- containers (which are not opaque when closed), currently the Library doesn't
+-- cover this possibility in an adequate manner.
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
             THEN
               IF obj = vessel OF THIS
                 THEN "That doesn't make sense."
@@ -1569,7 +1605,7 @@ EVERY liquid ISA OBJECT
   END VERB put_in.
 
 
-  VERB put_on
+  VERB put_on -- LIQUID
     WHEN obj
       DOES ONLY
         -- >>> implicit take >>>
@@ -1601,17 +1637,17 @@ EVERY liquid ISA OBJECT
 
   -- The verbs 'empty', 'empty_in' and 'empty_on' will be disabled as ungrammatical with liquids:
 
-  VERB 'empty'
+  VERB 'empty' -- LIQUID
     WHEN obj
     DOES ONLY "You can only empty containers."
   END VERB 'empty'.
 
-  VERB empty_in
+  VERB empty_in -- LIQUID
     WHEN obj
     DOES ONLY "You can only empty containers."
   END VERB empty_in.
 
-  VERB empty_on
+  VERB empty_on -- LIQUID
     WHEN obj
     DOES ONLY "You can only empty containers."
   END VERB empty_on.
@@ -1682,10 +1718,7 @@ EVERY LISTED_CONTAINER ISA OBJECT
     END FOR.
 
 
-
-
-
-  VERB examine
+  VERB examine -- LISTED_CONTAINER
     DOES ONLY
       IF THIS IS NOT OPAQUE
         THEN LIST THIS.
@@ -1713,8 +1746,12 @@ EVERY LISTED_CONTAINER ISA OBJECT
 
 
 
--- Note that closed listed_containers are by default opaque and they become "not opaque" when
--- they are opened.
+-- ======================================================
+-- LISTED CONTAINERS OPAQUENESS BASED ON OPEN/CLOSE STATE
+-- ======================================================
+
+-- Note that closed listed_containers are by default opaque and they become "not
+-- opaque" when they are opened.
 
 -- In order to support this behavior also on lockable listed_containers,
 -- before changing the opaqueness state we need to check that the cointainer is
